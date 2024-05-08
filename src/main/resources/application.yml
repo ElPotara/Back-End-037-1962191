@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=universidades;encrypt=false;
+    # spring.datasource.url=jdbc:mysql:3314/universidades
+    username: sa
+    password: P0o9i8u7
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    # spring.datasource.driver.class=com.mysql.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        # spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+
+server:
+  port: 8181

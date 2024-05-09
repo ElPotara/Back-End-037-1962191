@@ -10,11 +10,4 @@ public interface AlumnoService {
     void createAlumno(Alumno newAlumno);
 
     Alumno getAlumnoById(int id);
-
-    void deleteAlumno(int id);
-
-    void updateAlumno(int id, Alumno alumnoNuevo);
-
-    int getAlumnoListSize();
-
 }

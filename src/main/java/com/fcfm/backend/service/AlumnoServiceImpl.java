@@ -1,6 +1,9 @@
 package com.fcfm.backend.service;
 
 import com.fcfm.backend.model.Alumno;
+import com.fcfm.backend.repository.AlumnoRepository;
+import com.fcfm.backend.utils.AlumnoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,21 +12,15 @@ import java.util.List;
 @Service
 public class AlumnoServiceImpl implements AlumnoService{
     List<Alumno> alumnoList = new ArrayList<>();
-    public List<Alumno> getAlumnoList(){
-        return alumnoList;
-    }   //Agregado Linea 14
-
+    private AlumnoRepository alumnoRepository;
+    @Autowired
+    AlumnoServiceImpl(AlumnoRepository alumnoRepository) {this.alumnoRepository = alumnoRepository;}
+    public List<Alumno> getAlumnoList() {return alumnoList;}
     public void createAlumno(Alumno newAlumno){
-        alumnoList.add(newAlumno);
-    } //Agregad Linea 17
-
+        alumnoRepository.insertar(AlumnoMapper.alumnoModelToAlumnoEntity(newAlumno));
+    }
     public Alumno getAlumnoById(int id){
-        return alumnoList.get(id);
-    }   //Agregado Linea 21
-
-    public void deleteAlumno(int id){alumnoList.remove(id);}
-
-    public void updateAlumno(int id, Alumno alumnoNuevo){alumnoList.set(id, alumnoNuevo);}
-
-    public int getAlumnoListSize(){return  alumnoList.size();}
+        com.fcfm.backend.repository.entity.Alumno alumnoEntity = alumnoRepository.getAlumnoById(Long.valueOf(id));
+        return AlumnoMapper.alumnoEntitytoAlumnoModel(alumnoEntity);
+    }
 }

@@ -37,26 +37,4 @@ public class AlumnoApiControllerImpl implements AlumnoApiController {
     public ResponseEntity<Alumno> getAlumnoById(@PathVariable int idAlumno){
         return ResponseEntity.ok().body(alumnoService.getAlumnoById(idAlumno));
     }
-
-    @Override
-    public ResponseEntity<String> deleteAlumno(@PathVariable int idAlumno){
-        if(idAlumno >= 0 ) {
-            alumnoService.deleteAlumno(idAlumno);
-            return ResponseEntity.ok().body(String.format("Estudiante con id %d eliminado correctamente", idAlumno));
-        } else  {
-            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("No existe un estudiante con id %d", idAlumno));
-        }
-    }
-
-    @Override
-    public ResponseEntity<Alumno> updateAlumno(@PathVariable int idAlumno, @RequestBody Alumno alumnoNuevo){
-        alumnoService.updateAlumno(idAlumno, alumnoNuevo);
-        return  ResponseEntity.ok().body(alumnoNuevo);
-    }
-
-    public ResponseEntity<Integer> getAlumnoListSize() {
-        List<Alumno> listaAlumnos = alumnoService.getAlumnoList();
-        return ResponseEntity.ok().body(alumnoService.getAlumnoListSize());
-    }
-
 }

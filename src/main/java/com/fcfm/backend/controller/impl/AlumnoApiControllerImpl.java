@@ -27,14 +27,28 @@ public class AlumnoApiControllerImpl implements AlumnoApiController {
         alumnoService.createAlumno(alumnoNuevo);
         return ResponseEntity.ok().body(alumnoNuevo);
     }
-
-    @Override
-    public ResponseEntity<List<Alumno>> getAlumnoList() {
-        return ResponseEntity.ok().body(alumnoService.getAlumnoList());
-    }
-
     @Override
     public ResponseEntity<Alumno> getAlumnoById(@PathVariable int idAlumno){
         return ResponseEntity.ok().body(alumnoService.getAlumnoById(idAlumno));
     }
+    @Override
+    public ResponseEntity<Void> deleteAlumno(@PathVariable int idAlumno) {
+        alumnoService.deleteAlumno(idAlumno);
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public ResponseEntity<Alumno> updateAlumno(@PathVariable int idAlumno, @RequestBody Alumno alumnoActualizado) {
+        alumnoService.updateAlumno(idAlumno, alumnoActualizado);
+        return ResponseEntity.ok().build();
+    }
+
+
+
+    @Override
+    public ResponseEntity<List<Alumno>> getAllAlumnos() {
+        List<Alumno> alumnosList = alumnoService.getAllAlumnos();
+        return ResponseEntity.ok().body(alumnosList);
+    }
+
 }

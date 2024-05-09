@@ -3,6 +3,7 @@ package com.fcfm.backend.model;
 import java.sql.Date;
 
 public class Alumno{
+    private int alumnoId;
     private String primerNombre;
     private String segundoNombre;
     private String apellidoPat;
@@ -47,4 +48,8 @@ public class Alumno{
     public String getCurp() {return curp;}
 
     public void setCurp(String curp) {this.curp = curp;}
+
+    public int getAlumnoId() {return alumnoId;}
+
+    public void setAlumnoId(int id) {this.alumnoId = id;}
 }

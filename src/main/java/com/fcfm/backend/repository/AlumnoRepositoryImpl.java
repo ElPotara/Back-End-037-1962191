@@ -14,14 +14,30 @@ import java.util.List;
 public class AlumnoRepositoryImpl implements AlumnoRepository{
     @PersistenceContext
     private EntityManager em;
-
     @Transactional
     public void insertar(Alumno alumno){
         em.persist(alumno);
     }
-
     @Override
     public Alumno getAlumnoById(Long id){
         return em.find(Alumno.class, id);
     }
+    @Transactional
+    @Override
+    public void eliminar(Long id) {em.remove(getAlumnoById(id));}
+
+    @Transactional
+    @Override
+    public void actualizar(Alumno alumno) {
+        em.merge(alumno);
     }
+
+
+    @Override
+    public List<Alumno> getAllAlumnos() {
+        TypedQuery<Alumno> query = em.createQuery("SELECT a FROM Alumno a", Alumno.class);
+        return query.getResultList();
+    }
+
+}
+

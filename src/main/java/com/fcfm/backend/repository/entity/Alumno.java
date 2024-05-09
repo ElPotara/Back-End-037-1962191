@@ -29,6 +29,7 @@ public class Alumno{
     public Alumno() {
     }
 
+    public void setAlumnoId(Long alumnoId) {this.alumnoId = alumnoId;}
     public Long getAlumnoId() {return alumnoId;}
 
     public String getPrimerNombre() {return primerNombre;}

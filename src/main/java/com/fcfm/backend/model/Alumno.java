@@ -11,6 +11,10 @@ public class Alumno{
     private String curp;
     private String email;
 
+    private String fechaNac;
+
+    public String getFechaNac() {return fechaNac;}
+    public void setFechaNac(String fechaNac) {this.fechaNac = fechaNac;}
 
     public String getEmail() {
         return email;

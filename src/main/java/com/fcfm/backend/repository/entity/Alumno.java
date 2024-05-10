@@ -16,13 +16,15 @@ public class Alumno{
     private String apellidoMat;
     private String curp;
     private String email;
+    private Date fechaNac;
 
-    public Alumno(String primerNombre, String segundoNombre, String apellidoPat, String apellidoMat, String curp, String email) {
+    public Alumno(String primerNombre, String segundoNombre, String apellidoPat, String apellidoMat, String curp,Date fechaNac, String email) {
         this.primerNombre = primerNombre;
         this.segundoNombre = segundoNombre;
         this.apellidoPat = apellidoPat;
         this.apellidoMat = apellidoMat;
         this.curp = curp;
+        this.fechaNac = fechaNac;
         this.email = email;
     }
 
@@ -55,5 +57,9 @@ public class Alumno{
     public String getEmail() {return email;}
 
     public void setEmail(String email) {this.email = email;}
+
+    public Date getFechaNac() {return fechaNac;}
+
+    public void setFechaNac(Date fechaNac) {this.fechaNac = fechaNac;}
 }
 

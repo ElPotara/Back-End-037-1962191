@@ -14,6 +14,7 @@ public class AlumnoMapper {
         model.setApellidoPat(alumno.getApellidoPat());
         model.setApellidoMat(alumno.getApellidoMat());
         model.setCurp(alumno.getCurp());
+        model.setFechaNac(alumno.getFechaNac().toString()); //njnvjvn
         model.setEmail(alumno.getEmail());
         return model;
     }
@@ -26,6 +27,7 @@ public class AlumnoMapper {
         entity.setApellidoPat(alumno.getApellidoPat());
         entity.setApellidoMat(alumno.getApellidoMat());
         entity.setCurp(alumno.getCurp());
+        entity.setFechaNac(Date.valueOf(alumno.getFechaNac())); //ihgfi
         entity.setEmail(alumno.getEmail());
 
         return entity;
@@ -38,6 +40,7 @@ public class AlumnoMapper {
         entity.setApellidoPat(alumno.getApellidoPat());
         entity.setApellidoMat(alumno.getApellidoMat());
         entity.setCurp(alumno.getCurp());
+        entity.setFechaNac(Date.valueOf(alumno.getFechaNac())); //ihgfi
         entity.setEmail(alumno.getEmail());
 
         return entity;

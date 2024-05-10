@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class AlumnoServiceImpl implements AlumnoService{
             existingAlumno.setApellidoPat(updatedAlumno.getApellidoPat());
             existingAlumno.setApellidoMat(updatedAlumno.getApellidoMat());
             existingAlumno.setCurp(updatedAlumno.getCurp());
+            existingAlumno.setFechaNac(updatedAlumno.getFechaNac()); //ihgfi
             existingAlumno.setEmail(updatedAlumno.getEmail());
             alumnoRepository.actualizar(AlumnoMapper.alumnoModelToAlumnoEntity(existingAlumno));
         }

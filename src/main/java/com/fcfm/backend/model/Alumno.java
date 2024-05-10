@@ -1,22 +1,20 @@
 package com.fcfm.backend.model;
 
+import java.sql.Date;
+
 public class Alumno{
-    private String nombre;
+    private int alumnoId;
+    private String primerNombre;
+    private String segundoNombre;
     private String apellidoPat;
     private String apellidoMat;
-    private Integer edad;
-    private String fechaNac;
-
-    private String telefono;
+    private String curp;
     private String email;
 
-    public String getTelefono() {
-        return telefono;
-    }
+    private String fechaNac;
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+    public String getFechaNac() {return fechaNac;}
+    public void setFechaNac(String fechaNac) {this.fechaNac = fechaNac;}
 
     public String getEmail() {
         return email;
@@ -26,13 +24,6 @@ public class Alumno{
         this.email = email;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public String getApellidoPat() {
         return apellidoPat;
@@ -50,19 +41,19 @@ public class Alumno{
         this.apellidoMat = apellidoMat;
     }
 
-    public Integer getEdad() {
-        return edad;
-    }
+    public String getPrimerNombre() {return primerNombre;}
 
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
+    public void setPrimerNombre(String primerNombre) {this.primerNombre = primerNombre;}
 
-    public String getFechaNac() {
-        return fechaNac;
-    }
+    public String getSegundoNombre() {return segundoNombre;}
 
-    public void setFechaNac(String fechaNac) {
-        this.fechaNac = fechaNac;
-    }
+    public void setSegundoNombre(String segundoNombre) {this.segundoNombre = segundoNombre;}
+
+    public String getCurp() {return curp;}
+
+    public void setCurp(String curp) {this.curp = curp;}
+
+    public int getAlumnoId() {return alumnoId;}
+
+    public void setAlumnoId(int id) {this.alumnoId = id;}
 }

@@ -1,29 +1,57 @@
 package com.fcfm.backend.service;
 
 import com.fcfm.backend.model.Alumno;
+import com.fcfm.backend.repository.AlumnoRepository;
+import com.fcfm.backend.utils.AlumnoMapper;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class AlumnoServiceImpl implements AlumnoService{
     List<Alumno> alumnoList = new ArrayList<>();
-    public List<Alumno> getAlumnoList(){
-        return alumnoList;
-    }   //Agregado Linea 14
-
+    private AlumnoRepository alumnoRepository;
+    @Autowired
+    AlumnoServiceImpl(AlumnoRepository alumnoRepository) {this.alumnoRepository = alumnoRepository;}
     public void createAlumno(Alumno newAlumno){
-        alumnoList.add(newAlumno);
-    } //Agregad Linea 17
-
+        alumnoRepository.insertar(AlumnoMapper.alumnoModelToAlumnoEntity2(newAlumno));
+    }
     public Alumno getAlumnoById(int id){
-        return alumnoList.get(id);
-    }   //Agregado Linea 21
+        com.fcfm.backend.repository.entity.Alumno alumnoEntity = alumnoRepository.getAlumnoById(Long.valueOf(id));
+        return AlumnoMapper.alumnoEntitytoAlumnoModel(alumnoEntity);
+    }
+    @Override
+    public void deleteAlumno(int id) {alumnoRepository.eliminar(Long.valueOf(id));}
 
-    public void deleteAlumno(int id){alumnoList.remove(id);}
+    @Override
+    public void updateAlumno(int id, Alumno updatedAlumno) {
+        Alumno existingAlumno = getAlumnoById(id);
+        if (existingAlumno != null) {
+            existingAlumno.setPrimerNombre(updatedAlumno.getPrimerNombre());
+            existingAlumno.setSegundoNombre(updatedAlumno.getSegundoNombre());
+            existingAlumno.setApellidoPat(updatedAlumno.getApellidoPat());
+            existingAlumno.setApellidoMat(updatedAlumno.getApellidoMat());
+            existingAlumno.setCurp(updatedAlumno.getCurp());
+            existingAlumno.setFechaNac(updatedAlumno.getFechaNac()); //ihgfi
+            existingAlumno.setEmail(updatedAlumno.getEmail());
+            alumnoRepository.actualizar(AlumnoMapper.alumnoModelToAlumnoEntity(existingAlumno));
+        }
+    }
 
-    public void updateAlumno(int id, Alumno alumnoNuevo){alumnoList.set(id, alumnoNuevo);}
 
-    public int getAlumnoListSize(){return  alumnoList.size();}
+
+    @Override
+    public List<Alumno> getAllAlumnos() {
+        List<com.fcfm.backend.repository.entity.Alumno> alumnosEntityList = alumnoRepository.getAllAlumnos();
+        List<Alumno> alumnosList = new ArrayList<>();
+        for (com.fcfm.backend.repository.entity.Alumno alumnoEntity : alumnosEntityList) {
+            alumnosList.add(AlumnoMapper.alumnoEntitytoAlumnoModel(alumnoEntity));
+        }
+        return alumnosList;
+    }
 }
